@@ -12,32 +12,84 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::simplepaginate(4);
-        // $users = User::find([2,4],['name','email'])->count();
-        // $users = User::count();
-        // $users = User::where('city',"=","North Gregoriofurt")->get();
-        // $users = User::where([
-            //     ['city',"=","Destinhaven"],
-            //     ['age','<',20]
-            // ])->get();
-            // $users = User::where('city',"=","Destinhaven")->orwhere('age',">",35)->get();
-            // $users = User::whereCity("Destinhaven")->get();
-            // $users = User::whereCity("Destinhaven")->select('name','email as User Email')->get();
-            // $users = User::whereCity("Destinhaven")->select('name','email as User Email')->toSql();
-            // $users = User::whereCity("Destinhaven")->select('name','email as User Email')->toRawSql();
-            // $users = User::whereCity("Destinhaven")->select('name','email as User Email')->dd();
-            // $users = User::whereCity("Destinhaven")->select('name','email as User Email')->ddRawSql();
-            // $users = User::whereCity("Destinhaven")->whereAge(19)->get();
-            // $users = User::where("city","=","Destinhaven")->first();
-            // $users = User::where("city","<>","Destinhaven")->get();
-            // $users = User::whereNot("city","Destinhaven")->get();
-            // $users = User::whereBetween("age",[20,25])->get();
-            // $users = User::whereNotBetween("age",[20,25])->get();
-            // $users = User::whereIn("city",["Destinhaven","West Flavio"])->get();
-            // $users = User::whereNotIn("city",["Destinhaven","West Flavio"])->get();
-        // return $users;
-        return view('home',compact('users'));
+        // $users = User::where('city',"Barishal")->chunk(5, function ($users) {
+        
+        //     foreach ($users as $user) {
+        //         echo "$user->name $user->age". "<br>";
+
+        //     }
+        //     echo "<br>";
+     
+        
+            // foreach (User::lazy() as $user) {
+            //     echo "$user->name $user->age". "<br>";
+
+            // }
+            // echo "<br>";
+            // $users= User::lazy();
+            $users= User::cursor();
+       
+    
+      return view('home',compact('users'));
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // public function index()
+    // {
+    //     $users = User::simplepaginate(4);
+    //     // $users = User::find([2,4],['name','email'])->count();
+    //     // $users = User::count();
+    //     // $users = User::where('city',"=","North Gregoriofurt")->get();
+    //     // $users = User::where([
+    //         //     ['city',"=","Destinhaven"],
+    //         //     ['age','<',20]
+    //         // ])->get();
+    //         // $users = User::where('city',"=","Destinhaven")->orwhere('age',">",35)->get();
+    //         // $users = User::whereCity("Destinhaven")->get();
+    //         // $users = User::whereCity("Destinhaven")->select('name','email as User Email')->get();
+    //         // $users = User::whereCity("Destinhaven")->select('name','email as User Email')->toSql();
+    //         // $users = User::whereCity("Destinhaven")->select('name','email as User Email')->toRawSql();
+    //         // $users = User::whereCity("Destinhaven")->select('name','email as User Email')->dd();
+    //         // $users = User::whereCity("Destinhaven")->select('name','email as User Email')->ddRawSql();
+    //         // $users = User::whereCity("Destinhaven")->whereAge(19)->get();
+    //         // $users = User::where("city","=","Destinhaven")->first();
+    //         // $users = User::where("city","<>","Destinhaven")->get();
+    //         // $users = User::whereNot("city","Destinhaven")->get();
+    //         // $users = User::whereBetween("age",[20,25])->get();
+    //         // $users = User::whereNotBetween("age",[20,25])->get();
+    //         // $users = User::whereIn("city",["Destinhaven","West Flavio"])->get();
+    //         // $users = User::whereNotIn("city",["Destinhaven","West Flavio"])->get();
+    //     // return $users;
+    //     return view('home',compact('users'));
+    // }
 
     /**
      * Show the form for creating a new resource.
